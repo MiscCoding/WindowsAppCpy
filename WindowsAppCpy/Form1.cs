@@ -19,6 +19,14 @@ namespace WindowsAppCpy
         string fileSelection = "";
         string newFolder = "";
 
+        private void initialize() {
+            fileSelection = "";
+            appPath = "";
+            newFolder = "";
+            this.lstFileList.Items.Clear();
+            this.lstFldrBox.Items.Clear();
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +49,7 @@ namespace WindowsAppCpy
         private void GetDirectories()
         {
 
-
+            
             string [] fileArray = Directory.GetDirectories(appPath);
             for (int i = 0; i < fileArray.Length; i++)
             {
@@ -75,6 +83,7 @@ namespace WindowsAppCpy
                 newFolder = appPath + "\\" + this.txtBxFolderName.Text;
                 Directory.CreateDirectory(newFolder);
                 copyfiles(newFolder);
+                initialize();
             }
 
             void copyfiles(string newFolder)
